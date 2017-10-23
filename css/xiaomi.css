@@ -2,7 +2,7 @@
 * @Author: lenovo
 * @Date:   2017-08-29 17:50:01
 * @Last Modified by:   lenovo
-* @Last Modified time: 2017-10-12 22:59:17
+* @Last Modified time: 2017-10-22 17:29:10
 */
 @font-face {
   font-family: 'iconfont';  /* project id 401139 */
@@ -78,6 +78,7 @@
 	font-size: 12px;
 	color: #b0b0b0;
 	line-height: 40px;
+	position: relative;
 }
 .gouwuche:hover{
 	background-color: #fff;
@@ -87,6 +88,23 @@
 }
 .gouwuche a:hover{
 	color: #ff6700;
+}
+.active-gouwuche{
+	width: 300px;
+	height: 60px;
+	background: #fff;
+	position: absolute;
+	right: 0;
+	font-size: 14px;
+	color: #000;
+	text-align: center;
+	line-height: 60px;
+	opacity: 0;
+	transition: all 1s;
+
+}
+.gouwuche:hover .active-gouwuche{
+	opacity: 1;
 }
 /* .gouwuche-wenzi{
 	float: left;
@@ -190,6 +208,7 @@ input{
 	margin: 0 auto;
 	position: relative;/* 相对定位 */
 }
+
 .banner-img{
 	width: 100%;
 	height: 100%;
@@ -512,6 +531,7 @@ input{
 	color: #333333;
 	float: left;
 	margin-right: 20px;
+	/* text-decoration: underline; */
 }
 .wenzi1{
 	margin-right: 0px;
@@ -783,7 +803,7 @@ input{
 	height: 100%;
 	background: green;
 	position: relative;
-	
+	transition: all 2s;
 
 }
 .goodsitem{
@@ -792,6 +812,7 @@ input{
 	background-color: #f5f5f5;
 	float: left;
 	position: relative;
+
 	
 }
 .nr-je h1{

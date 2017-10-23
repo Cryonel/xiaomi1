@@ -44,6 +44,7 @@
 						<i class="iconfont">&#xe602;</i>
 						购物车（0）
 					</a>
+					<div class="active-gouwuche">购物车中没有商品，赶紧选购吧！</div>
 				
 					<!-- <div class="gouwuche-wenzi">购物车(0)</div> -->
 					<!-- <img src="img/images/gouwuche.png" alt=""> -->
@@ -282,7 +283,7 @@
 		<div class="jiadian-top">
 			<h6>家电</h6>
 			<div class="jiadian-top-you">
-				<div class="jiadian-top-you-wenzi wenzi2 wenzi3">热门</div>
+				<div class="jiadian-top-you-wenzi wenzi2 wenzi3 active">热门</div>
 				<div class="jiadian-top-you-wenzi wenzi3">电视影音</div>
 				<div class="jiadian-top-you-wenzi wenzi3">电脑</div>
 				<div class="jiadian-top-you-wenzi wenzi1 wenzi3">家居</div>
@@ -1937,50 +1938,65 @@
 
 	// 内容开始
 	{
-        let inners = document.querySelector(".goods");
-        let pagers = document.querySelectorAll(".dian1");
-        let prev = document.querySelector(".prev");
-        let next = document.querySelector(".next");
-        // console.log(inners);
-        // console.log(pagers);
-        pagers.forEach(function(val,index){
-            val.onclick = Fn;
-            function Fn(){
-                for(i = 0; i<pagers.length; i ++){
-                    pagers[i].classList.remove("ache")
-                }
-                val.classList.add("ache");
-                inners.style.marginLeft = -296*index+"px"
-                aa=index;
-            }
 
-        })
-        let aa=0;
-        next.onclick = function(){
-            aa++;
-            if(aa==pagers.length){
-                aa=pagers.length-1;
-            }
-                for(let i = 0; i<pagers.length; i ++){
-                    pagers[i].classList.remove("ache")
-                }
-                pagers[aa].classList.add("ache");
-                inners.style.marginLeft = -296*aa+"px"
-            }
+		function bottomFn(parent){
+	        let inners = parent.querySelector(".goods");
+	        let pagers = parent.querySelectorAll(".dian1");
+	        let prev = parent.querySelector(".prev");
+	        let next = parent.querySelector(".next");
+	        // console.log(inners);
+	        // console.log(pagers);
+	        pagers.forEach(function(val,index){
+	            val.onclick = Fn;
+	            function Fn(){
+	                for(i = 0; i<pagers.length; i ++){
+	                    pagers[i].classList.remove("ache")
+	                }
+	                val.classList.add("ache");
+	                inners.style.marginLeft = -296*index+"px"
+	                aa=index;
+	            }
 
-            prev.onclick = function(){
-            aa--;
-            if(aa==-1){
-                aa=0;
-            }
-                for(let i = 0; i<pagers.length; i ++){
-                    pagers[i].classList.remove("ache")
-                }
-                pagers[aa].classList.add("ache");
-                inners.style.marginLeft = -296*aa+"px"
-            }
-    
-    }
+	        })
+	        next.onclick = function(){
+	        	dianjiFn("r");
+	        }
+	        prev.onclick = function(){
+	        	dianjiFn("l");
+	        }
+	        let aa=0;
+	        function dianjiFn(dianji){
+	        	if(dianji === "r"){
+	        		aa++;
+	        		if(aa == pagers.length){
+	        		aa =  pagers.length-1
+	        		}
+	        		for(i = 0; i<pagers.length; i ++){
+	                    pagers[i].classList.remove("ache")
+	                }
+	                pagers[aa].classList.add("ache");
+	                inners.style.marginLeft = -296*aa+"px"
+	        	}else if(dianji	 === "l" ){
+	        		aa--;
+	        		if(aa == -1){
+	        			aa = 0
+	        		}
+	        		for(i = 0; i<pagers.length; i ++){
+	                    pagers[i].classList.remove("ache")
+	                }
+	                pagers[aa].classList.add("ache");
+	                inners.style.marginLeft = -296*aa+"px"
+	        	}
+	        	
+	        }
+	    }
+	    let goods = document.querySelectorAll(".nr-je");
+	    for(let i=0;i<goods.length;i++){
+	    	bottomFn(goods[i])
+	    }
+	    
+
+   }
 	// 内容结束
 
 
